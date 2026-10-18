@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Music</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at top left, #542080 0%, transparent 45%),
+      radial-gradient(ellipse at bottom right, #073e63 0%, transparent 50%),
+      linear-gradient(135deg, #080816, #111126, #090d1b);
+    background-attachment: fixed;
+}
+header {
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ffffff18;
+}
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #c9a0ff;
+}
+.logo span { color: #fff; }
+header a {
+    color: #ddd;
+    text-decoration: none;
+}
+main {
+    max-width: 1050px;
+    margin: auto;
+    padding: 65px 22px;
+}
+.hero { text-align: center; }
+h1 {
+    font-size: clamp(38px, 7vw, 68px);
+    margin: 0 0 15px;
+}
+h1 span {
+    color: #c49aff;
+}
+.subtitle {
+    color: #bbb9d1;
+    font-size: 17px;
+    line-height: 1.7;
+}
+.search {
+    display: flex;
+    max-width: 650px;
+    margin: 32px auto;
+    padding: 7px;
+    border: 1px solid #ffffff25;
+    background: #ffffff0d;
+    border-radius: 17px;
+    backdrop-filter: blur(15px);
+}
+.search input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    color: white;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 14px 21px;
+    background: linear-gradient(135deg, #a855f7, #6366f1);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover {
+    filter: brightness(1.2);
+}
+h2 {
+    margin-top: 55px;
+    font-size: 25px;
+}
+.categories, .songs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 17px;
+}
+.card {
+    background: #ffffff0c;
+    border: 1px solid #ffffff18;
+    border-radius: 18px;
+    padding: 22px;
+    transition: .2s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    background: #ffffff18;
+    border-color: #b78aff;
+}
+.category {
+    cursor: pointer;
+}
+.art {
+    font-size: 38px;
+    margin-bottom: 13px;
+}
+.card h3 { margin: 5px 0 9px; }
+.card p {
+    color: #b8b5cb;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.card button {
+    width: 100%;
+    margin-top: 12px;
+}
+#message {
+    text-align: center;
+    color: #c9a0ff;
+    margin-top: 25px;
+}
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #9693ad;
+    border-top: 1px solid #ffffff15;
+}
+@media(max-width: 500px) {
+    header { padding: 20px; }
+    main { padding-top: 45px; }
+    .search button { padding: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">♫ Vibe<span>Music</span></div>
+    <a href="#discover">Discover Music</a>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Feel Every <span>Vibe.</span></h1>
+        <p class="subtitle">
+            Search your mood. Discover your music.<br>
+            Your next favourite song is waiting.
+        </p>
+
+        <form class="search" id="searchForm">
+            <input id="searchInput"
+              placeholder="Search songs, artists, moods..."
+              aria-label="Search music">
+            <button type="submit">Search ↗</button>
+        </form>
+
+        <p class="subtitle">
+            Try: Phonk, Sad Songs, BTS, Lofi, Romantic...
+        </p>
+    </section>
+
+    <section id="discover">
+        <h2>Explore Your Vibe ✨</h2>
+
+        <div class="categories">
+            <div class="card category" data-query="sad songs">
+                <div class="art">🌧️</div>
+                <h3>Sad Vibes</h3>
+                <p>Emotional songs for quiet moments.</p>
+            </div>
+
+            <div class="card category" data-query="phonk music">
+                <div class="art">🔥</div>
+                <h3>Phonk</h3>
+                <p>Powerful beats and energetic sounds.</p>
+            </div>
+
+            <div class="card category" data-query="romantic songs">
+                <div class="art">💜</div>
+                <h3>Romantic</h3>
+                <p>Songs full of love and feelings.</p>
+            </div>
+
+            <div class="card category" data-query="lofi chill music">
+                <div class="art">🌙</div>
+                <h3>Lofi & Chill</h3>
+                <p>Relax, study, and enjoy the moment.</p>
+            </div>
+
+            <div class="card category" data-query="BTS songs">
+                <div class="art">🎤</div>
+                <h3>K-Pop</h3>
+                <p>BTS and more K-pop favourites.</p>
+            </div>
+
+            <div class="card category" data-query="trending songs">
+                <div class="art">⚡</div>
+                <h3>Trending Hits</h3>
+                <p>Discover popular music and new hits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 id="resultsTitle">Popular Searches 🎵</h2>
+        <div class="songs" id="results"></div>
+        <p id="message"></p>
+    </section>
+</main>
+
+<footer>
+    Made for music lovers ♡ | VibeMusic
+</footer>
+
+<script>
+const input = document.getElementById("searchInput");
+const results = document.getElementById("results");
+const message = document.getElementById("message");
+const title = document.getElementById("resultsTitle");
+
+const suggestions = [
+    {name: "Chill & Lofi", icon: "🌌", query: "lofi chill music"},
+    {name: "Phonk Beats", icon: "🏎️", query: "popular phonk music"},
+    {name: "Sad Songs", icon: "🌧️", query: "sad songs playlist"},
+    {name: "BTS Favourites", icon: "💜", query: "BTS songs playlist"},
+    {name: "Romantic Hits", icon: "❤️", query: "romantic songs playlist"},
+    {name: "Workout Music", icon: "💪", query: "workout music playlist"}
+];
+
+function searchMusic(query) {
+    query = query.trim();
+
+    if (!query) {
+        message.textContent = "Please enter a song, artist, or music style.";
+        input.focus();
+        return;
+    }
+
+    // Create a playlist-style collection of relevant searches.
+    const terms = [
+        query + " playlist",
+        query + " best songs",
+        query + " popular songs",
+        query + " mix"
+    ];
+
+    title.textContent = "Results for: " + query;
+    results.innerHTML = "";
+    message.textContent = "Choose a collection to explore on YouTube.";
+
+    terms.forEach((term, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = [
+            "🎧 Playlist",
+            "⭐ Best Songs",
+            "🔥 Popular Tracks",
+            "🌙 Music Mix"
+        ][index];
+
+        const description = document.createElement("p");
+        description.textContent = "Explore " + term;
+
+        const button = document.createElement("button");
+        button.textContent = "Find & Play ↗";
+        button.addEventListener("click", () => {
+            const url = "https://www.youtube.com/results?search_query="
+                + encodeURIComponent(term);
+            window.open(url, "_blank", "noopener");
+        });
+
+        card.append(heading, description, button);
+        results.appendChild(card);
+    });
+}
+
+document.getElementById("searchForm").addEventListener("submit", e => {
+    e.preventDefault();
+    searchMusic(input.value);
+});
+
+document.querySelectorAll(".category").forEach(card => {
+    card.addEventListener("click", () => {
+        const query = card.dataset.query;
+        input.value = query;
+        searchMusic(query);
+    });
+});
+
+suggestions.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const art = document.createElement("div");
+    art.className = "art";
+    art.textContent = item.icon;
+
+    const heading = document.createElement("h3");
+    heading.textContent = item.name;
+
+    const button = document.createElement("button");
+    button.textContent = "Explore Music ↗";
+    button.addEventListener("click", () => {
+        searchMusic(item.query);
+    });
+
+    card.append(art, heading, button);
+    results.appendChild(card);
+});
+</script>
+
+</body>
+</html>
